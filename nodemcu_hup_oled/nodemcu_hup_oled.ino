@@ -4,7 +4,7 @@ Hup Projesi Nodemcu Kodları
 
  
 const int buton_saydir = 15;
-int sayac = 0;
+int sayac = 210;
 int butonDurumu = 0;
 
 #include <ESP8266WiFi.h>
@@ -17,8 +17,8 @@ int butonDurumu = 0;
 #define RST_PIN 20 // RST-PIN for RC522 - RFID - SPI
 #define SS_PIN  2  // SDA-PIN for RC522 - RFID - SPI 
 MFRC522 mfrc522(SS_PIN, RST_PIN);   // Create MFRC522 instance
-const char* ssid = "burak_iphone";
-const char* password = "huptestnet";
+const char* ssid = "andromeda";
+const char* password = "serhat123";
 WiFiClient client;
 //const IPAddress server(192,168,1,22);
 Adafruit_SSD1306 display(-1);
@@ -39,7 +39,7 @@ void setup () {
   display.display();
   while (WiFi.status() != WL_CONNECTED) { 
   delay(5000);
-  Serial.println("Connecting..."); 
+  Serial.println("Baglaniyor..."); 
   
   }
     if (WiFi.status() == WL_CONNECTED) { 
@@ -56,7 +56,7 @@ void setup () {
         display.println("Projesidir.");               
         display.display();
         display.setCursor(0,55);
-        display.println((String)"IP:192.168.1." +sayac);               
+        display.println((String)"IP:192.168.43." +sayac);               
         display.display();
 
      
@@ -83,7 +83,7 @@ void loop() {
     display.println("Projesidir.");               
     display.display();
     display.setCursor(0,55);
-    display.println((String)"IP:192.168.1." +sayac);               
+    display.println((String)"IP:192.168.43." +sayac);               
     display.display();
     setup();
     
@@ -117,7 +117,7 @@ void loop() {
     HTTPClient http;  
     String postData;
     postData = "amount=3&sender=9E1BAE29&receiver=00";
-    http.begin((String)"http://192.168.1."+String(sayac)+(String)":3001/transaction/broadcast");
+    http.begin((String)"http://192.168.43."+String(sayac)+(String)":3001/transaction/broadcast");
     http.addHeader("Content-Type", "application/x-www-form-urlencoded");
     int httpCode = http.POST(postData);
     
@@ -148,7 +148,7 @@ void loop() {
     HTTPClient http;
     String postData;
     postData = "amount=3&sender=44C8EFE4&receiver=00";
-    http.begin((String)"http://192.168.1."+String(sayac)+(String)":3002/transaction/broadcast");
+    http.begin((String)"http://192.168.43."+String(sayac)+(String)":3002/transaction/broadcast");
     http.addHeader("Content-Type", "application/x-www-form-urlencoded");
     int httpCode = http.POST(postData);
             
@@ -178,7 +178,7 @@ void loop() {
     HTTPClient http; 
     String postData;
     postData = "amount=3&sender=CE32DEE6&receiver=00";
-    http.begin((String)"http://192.168.1."+String(sayac)+(String)":3003/transaction/broadcast");
+    http.begin((String)"http://192.168.43."+String(sayac)+(String)":3003/transaction/broadcast");
     http.addHeader("Content-Type", "application/x-www-form-urlencoded");
     int httpCode = http.POST(postData);
    
@@ -207,7 +207,7 @@ void loop() {
     HTTPClient http;  
     String postData;
     postData = "amount=3&sender=E75CB68B&receiver=00";
-    http.begin((String)"http://192.168.1."+String(sayac)+(String)":3004/transaction/broadcast");
+    http.begin((String)"http://192.168.43."+String(sayac)+(String)":3004/transaction/broadcast");
     http.addHeader("Content-Type", "application/x-www-form-urlencoded");
     int httpCode = http.POST(postData);
     
@@ -236,7 +236,7 @@ void loop() {
     HTTPClient http;  
     String postData;
     postData = "amount=3&sender=2EBB7160&receiver=44C8EFE4";
-    http.begin((String)"http://192.168.1."+String(sayac)+(String)":3005/transaction/broadcast");
+    http.begin((String)"http://192.168.43."+String(sayac)+(String)":3005/transaction/broadcast");
     http.addHeader("Content-Type", "application/x-www-form-urlencoded");
     int httpCode = http.POST(postData);
     
